@@ -153,7 +153,7 @@ public class CreateQuestionDAB {
 			assertTrue(!exist);
 			testDA.close();
 			
-		   } catch (QuestionAlreadyExist e) {
+		   } catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail  
 			fail();
