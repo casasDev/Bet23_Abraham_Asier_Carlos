@@ -1,0 +1,10 @@
+sonar-scanner.bat \
+  -D"sonar.organization=ingenieriasoftwareii" \
+  -D"sonar.projectKey=ingenieriasoftwareii_proyectoisoft2bets" \
+  -D"sonar.sources=." \
+  -D"sonar.host.url=https://sonarcloud.io"
+  
+  
+  
+  SONAR_TOKEN
+1815c6ae4d81e0c926bbdb76edefd7b6bffed253
