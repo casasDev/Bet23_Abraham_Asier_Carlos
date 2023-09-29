@@ -1,0 +1,7 @@
+organization=ingenieriasoftwareii
+projectKey=ingenieriasoftwareii_proyectoisoft2bets
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.46863
+dashboardUrl=https://sonarcloud.io/dashboard?id=ingenieriasoftwareii_proyectoisoft2bets
+ceTaskId=AYrf6m4o32EQ1jdkYAli
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYrf6m4o32EQ1jdkYAli
