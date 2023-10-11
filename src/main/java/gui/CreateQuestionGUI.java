@@ -52,7 +52,7 @@ public class CreateQuestionGUI extends JFrame {
 		}
 	}
 
-	private void jbInit(ArrayList<domain.Event> v) throws Exception {
+	private void jbInit(ArrayList<domain.Event> v){
 
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(604, 370));
