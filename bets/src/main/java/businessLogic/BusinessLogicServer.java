@@ -19,6 +19,8 @@ import javax.xml.ws.Endpoint;
 
 import configuration.ConfigXML;
 
+
+
 /**
  * It runs the business logic server as a separate process.
  */

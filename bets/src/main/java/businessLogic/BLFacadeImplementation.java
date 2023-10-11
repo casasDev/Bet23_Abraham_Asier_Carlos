@@ -380,5 +380,10 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.close();
 		return team;
 	}
+
+	public boolean ApustuaEgin(Registered u, ArrayList<Quote> q, Double balioa, Integer apustuaGalarazi) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
 

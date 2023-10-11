@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -49,13 +50,13 @@ public class GertaeraEzabatuGUI extends JFrame{
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	private JLabel jLabelMsg = new JLabel();
 	
-	private Vector<Date> datesWithEventsCurrentMonth = new Vector<Date>();
+	private ArrayList<Date> datesWithEventsCurrentMonth = new ArrayList<Date>();
 
 	private JButton jButtonEzabatu;
 
 	private JLabel jLabelErrorea;
 
-	public GertaeraEzabatuGUI(Vector<domain.Event> v) {
+	public GertaeraEzabatuGUI(ArrayList<domain.Event> v) {
 		try {
 			jbInit(v);
 		} catch (Exception e) {
@@ -63,7 +64,7 @@ public class GertaeraEzabatuGUI extends JFrame{
 		}
 	}
 
-	private void jbInit(Vector<domain.Event> v) throws Exception {
+	private void jbInit(ArrayList<domain.Event> v) throws Exception {
 
 		jLabelErrorea = new JLabel(); 
 		jLabelErrorea.setHorizontalAlignment(SwingConstants.CENTER);
@@ -183,7 +184,7 @@ public class GertaeraEzabatuGUI extends JFrame{
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
+						ArrayList<Event> events = facade.getEvents(firstDay);
 
 						if (events.isEmpty())
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
@@ -213,7 +214,7 @@ public class GertaeraEzabatuGUI extends JFrame{
 	}
 
 	
-public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWithEventsCurrentMonth) {
+public static void paintDaysWithEvents(JCalendar jCalendar,ArrayList<Date> datesWithEventsCurrentMonth2) {
 		// For each day with events in current month, the background color for that day is changed.
 
 		
@@ -232,7 +233,7 @@ public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWit
 			offset += 5;
 		
 		
-	 	for (Date d:datesWithEventsCurrentMonth){
+	 	for (Date d:datesWithEventsCurrentMonth2){
 
 	 		calendar.setTime(d);
 	 		System.out.println(d);

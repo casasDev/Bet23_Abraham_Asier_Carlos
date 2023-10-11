@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -114,7 +115,7 @@ public class AdminGUI extends JFrame {
 			jButtonGertaerakEzabatu.setBackground(Color.PINK);
 			jButtonGertaerakEzabatu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					JFrame a = new GertaeraEzabatuGUI(new Vector<Event>());
+					JFrame a = new GertaeraEzabatuGUI(new ArrayList<Event>());
 					a.setVisible(true);
 				}
 			});
@@ -141,7 +142,7 @@ public class AdminGUI extends JFrame {
 			jButtonCreateQuery.setText(ResourceBundle.getBundle("Etiquetas").getString("CreateQuery"));
 			jButtonCreateQuery.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					JFrame a = new CreateQuestionGUI(new Vector<Event>());
+					JFrame a = new CreateQuestionGUI(new ArrayList<Event>());
 					a.setVisible(true);
 				}
 			});
@@ -194,7 +195,7 @@ public class AdminGUI extends JFrame {
 			btnNewButton.setBounds(239, 44, 232, 30);
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					JFrame a = new KuotakIpiniGUI(new Vector<Event>());
+					JFrame a = new KuotakIpiniGUI(new ArrayList<Event>());
 					a.setVisible(true);
 				}
 			});
@@ -223,7 +224,7 @@ public class AdminGUI extends JFrame {
 			jButtonEmaitzaIpini.setBackground(Color.PINK);
 			jButtonEmaitzaIpini.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					JFrame a = new EmaitzakIpiniGUI(new Vector<Event>());
+					JFrame a = new EmaitzakIpiniGUI(new ArrayList<Event>());
 					a.setVisible(true);
 				}
 			});
