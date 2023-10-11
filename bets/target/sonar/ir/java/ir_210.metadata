@@ -1,0 +1,5 @@
+businessLogic.BLFacadeImplementation#getEventsMonth(Ljava/util/Date;)Ljava/util/ArrayList;
+==
+close dataAccess.DataAccess#close()V
+open dataAccess.DataAccess#open(Z)V
+getEventsMonth dataAccess.DataAccess#getEventsMonth(Ljava/util/Date;)Ljava/util/ArrayList;

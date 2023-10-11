@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: CreateQuestionBLBMTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 1.589 sec <<< FAILURE! - in CreateQuestionBLBMTest
+test1(CreateQuestionBLBMTest)  Time elapsed: 1.403 sec  <<< ERROR!
+java.util.MissingResourceException: Can't find bundle for base name Etiquetas, locale es_ES
+	at CreateQuestionBLBMTest.test1(CreateQuestionBLBMTest.java:60)
+
+test3(CreateQuestionBLBMTest)  Time elapsed: 0.003 sec  <<< ERROR!
+java.lang.NullPointerException
+	at CreateQuestionBLBMTest.test3(CreateQuestionBLBMTest.java:109)
+
+test7(CreateQuestionBLBMTest)  Time elapsed: 0.004 sec  <<< ERROR!
+java.util.MissingResourceException: Can't find bundle for base name Etiquetas, locale es_ES
+	at CreateQuestionBLBMTest.test7(CreateQuestionBLBMTest.java:149)
+
