@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>12</groupId>
-	<artifactId>Bet23_Abraham_Asier_Carlos</artifactId>
+	<artifactId>ingenieriasoftwareii_proyectoisoft2bets</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<build>
@@ -44,6 +44,7 @@
              			   <include>*INT.java</include>
                 		   <include>*DAB.java</include>
               			   <include>*DAW.java</include>
+              			   <include>*Test.java</include>
  			  </includes>
            		 </configuration>
        		        </plugin>
@@ -61,10 +62,10 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 
-		<sonar.organization>monopolystaticverification777</sonar.organization>
+		<sonar.organization>ingenieriasoftwareii</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.projectKey>Bet23_Abraham_Asier_Carlos</sonar.projectKey>
-		<sonar.login>11fbf5ccd617f0b65f8c4cb2bc7b5b6018311cb8</sonar.login>
+		<sonar.projectKey>ingenieriasoftwareii_proyectoisoft2bets</sonar.projectKey>
+		<sonar.login>8cb7af3fd8c9f5230255906584695429be9bae19</sonar.login>
 	</properties>
 
 	<!-- https://mvnrepository.com/artifact/junit/junit -->
