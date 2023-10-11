@@ -1,8 +1,3 @@
-Create or update your
-.github/workflows/build.yml
-
-Here is a base configuration to run a SonarCloud analysis on your master branch and Pull Requests. If you already have some GitHub Actions, you might want to just add some of these new steps to an existing one.
-
 name: SonarCloud
 on:
   push:
