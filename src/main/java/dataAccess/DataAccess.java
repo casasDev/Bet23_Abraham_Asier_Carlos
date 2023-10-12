@@ -825,14 +825,14 @@ public void open(boolean initializeMode){
 		db.getTransaction().commit();
 	}
 	
-	public boolean ApustuaEgin(Registered u, Vector<Quote> quote, Double balioa, Integer apustuBikoitzaGalarazi) {
+	public boolean ApustuaEgin(Registered u, Vector<Quote> q2, Double balioa, Integer apustuBikoitzaGalarazi) {
 		Registered user = (Registered) db.find(Registered.class, u.getUsername());
 		Boolean b;
 		if(user.getDirukop()>=balioa) {
 			db.getTransaction().begin();
 			ApustuAnitza apustuAnitza = new ApustuAnitza(user, balioa);
 			db.persist(apustuAnitza);
-			for(Quote quo: quote) {
+			for(Quote quo: q2) {
 				Quote kuote = db.find(Quote.class, quo.getQuoteNumber());
 				Apustua ap = new Apustua(apustuAnitza, kuote);
 				db.persist(ap);
@@ -868,9 +868,9 @@ public void open(boolean initializeMode){
 				}
 				if(b) {
 					if(erab.getNork().getDiruLimitea()<balioa) {
-						this.ApustuaEgin(erab.getNork(), quote, erab.getNork().getDiruLimitea(), apustuBikoitzaGalarazi);
+						this.ApustuaEgin(erab.getNork(), q2, erab.getNork().getDiruLimitea(), apustuBikoitzaGalarazi);
 					}else{
-						this.ApustuaEgin(erab.getNork(), quote, balioa, apustuBikoitzaGalarazi);
+						this.ApustuaEgin(erab.getNork(), q2, balioa, apustuBikoitzaGalarazi);
 					}
 				}
 			}

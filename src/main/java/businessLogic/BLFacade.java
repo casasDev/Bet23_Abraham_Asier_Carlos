@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Vector;
-
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
@@ -49,7 +47,7 @@ public interface BLFacade  {
 	 * @param date in which events are retrieved
 	 * @return collection of events
 	 */
-	@WebMethod public ArrayList<Event> getEvents(Date date);
+	@WebMethod public List<Event> getEvents(Date date);
 	
 	/**
 	 * This method retrieves from the database the dates a month for which there are events
@@ -57,7 +55,7 @@ public interface BLFacade  {
 	 * @param date of the month for which days with events want to be retrieved 
 	 * @return collection of dates
 	 */
-	@WebMethod public ArrayList<Date> getEventsMonth(Date date);
+	@WebMethod public List<Date> getEventsMonth(Date date);
 	
 	/**
 	 * This method calls the data access to initialize the database with some events and questions.
@@ -76,11 +74,11 @@ public interface BLFacade  {
 	
 	@WebMethod public Collection<Question> findQuestion(Event event);
 	
-	@WebMethod public void DiruaSartu(Registered u, Double dirua, String mota); 
+	@WebMethod public void diruaSartu(Registered u, Double dirua, String mota); 
 	
 	@WebMethod public Collection<Quote> findQuote(Question question); 
 	
-	@WebMethod public boolean ApustuaEgin(Registered u, ArrayList<Quote> q, Double balioa, Integer apustuaGalarazi); 
+	@WebMethod public boolean apustuaEgin(Registered u, ArrayList<Quote> q, Double balioa, Integer apustuaGalarazi); 
 	
 	@WebMethod public List<Apustua> findApustua(Registered u); 
 	
@@ -96,7 +94,7 @@ public interface BLFacade  {
 	
 	@WebMethod public List<Transaction> findTransakzioak(Registered u); 
 	
-	@WebMethod public void EmaitzakIpini(Quote quote) throws EventNotFinished;
+	@WebMethod public void emaitzakIpini(Quote quote) throws EventNotFinished;
 	
 	@WebMethod  public boolean gertaeraEzabatu(Event ev);
 	
