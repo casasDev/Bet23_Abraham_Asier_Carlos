@@ -12,6 +12,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -58,7 +59,7 @@ public class ApustuaEginGUI extends JFrame{
 	private JScrollPane scrollPaneEvents = new JScrollPane();
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	
-	private ArrayList<Date> datesWithEventsCurrentMonth = new ArrayList<Date>();
+	private List<Date> datesWithEventsCurrentMonth = new ArrayList<Date>();
 	private final JLabel jLabelQuestion = new JLabel(); //$NON-NLS-1$ //$NON-NLS-2$
 	private final JComboBox<Question> jComboBoxQuestions = new JComboBox<Question>();
 	DefaultComboBoxModel<Question> modelQuestions = new DefaultComboBoxModel<Question>();
@@ -226,7 +227,7 @@ public class ApustuaEginGUI extends JFrame{
 					zenb = Double.parseDouble(textua);
 					if(zenb>0.0) {
 						if(zenb>=maxMinBet) {
-							Boolean b = businessLogic.ApustuaEgin(user, quoteVec, zenb, -1);
+							Boolean b = businessLogic.apustuaEgin(user, quoteVec, zenb, -1);
 							quoteList= new DefaultListModel<Quote>();
 							quoteVec= new ArrayList<Quote>();
 							list.setModel(quoteList);
@@ -392,7 +393,7 @@ public class ApustuaEginGUI extends JFrame{
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						ArrayList<Event> events = facade.getEvents(firstDay);
+						List<Event> events = facade.getEvents(firstDay);
 						
 						if (events.isEmpty()) {
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
@@ -429,7 +430,7 @@ public class ApustuaEginGUI extends JFrame{
 	}
 
 	
-public static void paintDaysWithEvents(JCalendar jCalendar,ArrayList<Date> datesWithEventsCurrentMonth2) {
+public static void paintDaysWithEvents(JCalendar jCalendar,List<Date> datesWithEventsCurrentMonth2) {
 		// For each day with events in current month, the background color for that day is changed.
 
 		

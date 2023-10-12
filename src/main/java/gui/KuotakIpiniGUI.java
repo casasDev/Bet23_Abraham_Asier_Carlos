@@ -52,7 +52,7 @@ public class KuotakIpiniGUI extends JFrame{
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	private JLabel jLabelMsg = new JLabel();
 	
-	private ArrayList<Date> datesWithEventsCurrentMonth = new ArrayList<Date>();
+	private List<Date> datesWithEventsCurrentMonth = new ArrayList<Date>();
 	private final JLabel jLabelQuestion = new JLabel(); //$NON-NLS-1$ //$NON-NLS-2$
 	private final JComboBox<Question> jComboBoxQuestions = new JComboBox<Question>();
 	DefaultComboBoxModel<Question> modelQuestions = new DefaultComboBoxModel<Question>();
@@ -260,7 +260,7 @@ public class KuotakIpiniGUI extends JFrame{
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						ArrayList<Event> events = facade.getEvents(firstDay);
+						List<Event> events = facade.getEvents(firstDay);
 						
 						if (events.isEmpty()) {
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
@@ -295,7 +295,7 @@ public class KuotakIpiniGUI extends JFrame{
 	}
 
 	
-public static void paintDaysWithEvents(JCalendar jCalendar,ArrayList<Date> datesWithEventsCurrentMonth2) {
+public static void paintDaysWithEvents(JCalendar jCalendar,List<Date> datesWithEventsCurrentMonth2) {
 		// For each day with events in current month, the background color for that day is changed.
 
 		

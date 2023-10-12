@@ -12,6 +12,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -51,7 +52,7 @@ public class GertaeraEzabatuGUI extends JFrame{
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	private JLabel jLabelMsg = new JLabel();
 	
-	private ArrayList<Date> datesWithEventsCurrentMonth = new ArrayList<Date>();
+	private List<Date> datesWithEventsCurrentMonth = new ArrayList<Date>();
 
 	private JButton jButtonEzabatu;
 
@@ -185,7 +186,7 @@ public class GertaeraEzabatuGUI extends JFrame{
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						ArrayList<Event> events = facade.getEvents(firstDay);
+						List<Event> events = facade.getEvents(firstDay);
 
 						if (events.isEmpty())
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
@@ -215,7 +216,7 @@ public class GertaeraEzabatuGUI extends JFrame{
 	}
 
 	
-public static void paintDaysWithEvents(JCalendar jCalendar,ArrayList<Date> datesWithEventsCurrentMonth2) {
+public static void paintDaysWithEvents(JCalendar jCalendar,List<Date> datesWithEventsCurrentMonth2) {
 		// For each day with events in current month, the background color for that day is changed.
 
 		
