@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.persistence.CascadeType;
@@ -27,17 +28,17 @@ public class Registered  implements Serializable{
 	
 	private Double dirukop;
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
-	private Vector<Transaction> transakzioak; 
+	private ArrayList<Transaction> transakzioak; 
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
-	private Vector<ApustuAnitza> apustuAnitzak; 
+	private ArrayList<ApustuAnitza> apustuAnitzak; 
 	private Double irabazitakoa;
 	private int zenbat;
 	private String mode;
 	private Double diruLimitea;
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	private Vector<Jarraitzailea> niriLista;
+	private ArrayList<Jarraitzailea> niriLista;
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	private Vector<Jarraitzailea> nikLista;
+	private ArrayList<Jarraitzailea> nikLista;
 	
 	@XmlIDREF
 	private Team taldea;
@@ -49,14 +50,14 @@ public class Registered  implements Serializable{
 		this.password=password;
 		this.bankAccount=bankAccount;
 		this.dirukop = 0.0; 
-		this.transakzioak = new Vector<Transaction>();
-		this.apustuAnitzak = new Vector<ApustuAnitza>();
+		this.transakzioak = new ArrayList<Transaction>();
+		this.apustuAnitzak = new ArrayList<ApustuAnitza>();
 		this.irabazitakoa=0.0;
 		this.zenbat=0;
 		this.mode=null;
 		this.diruLimitea=0.0;
-		this.nikLista= new Vector<Jarraitzailea>();
-		this.niriLista= new Vector<Jarraitzailea>();
+		this.nikLista= new ArrayList<Jarraitzailea>();
+		this.niriLista= new ArrayList<Jarraitzailea>();
 		this.taldea=null;
 	}
 	
@@ -69,11 +70,11 @@ public class Registered  implements Serializable{
 		super();
 	}
 	
-	public Vector<Transaction> getTransakzioak() {
+	public ArrayList<Transaction> getTransakzioak() {
 		return transakzioak;
 	}
 
-	public void setTransakzioak(Vector<Transaction> transakzioak) {
+	public void setTransakzioak(ArrayList<Transaction> transakzioak) {
 		this.transakzioak = transakzioak;
 	}
 	
@@ -85,11 +86,11 @@ public class Registered  implements Serializable{
 		this.dirukop = dirukop;
 	}
 
-	public Vector<ApustuAnitza> getApustuAnitzak() {
+	public ArrayList<ApustuAnitza> getApustuAnitzak() {
 		return apustuAnitzak;
 	}
 
-	public void setApustuAnitzak(Vector<ApustuAnitza> apustuak) {
+	public void setApustuAnitzak(ArrayList<ApustuAnitza> apustuak) {
 		this.apustuAnitzak = apustuak;
 	}
 	
@@ -125,18 +126,18 @@ public class Registered  implements Serializable{
 		this.diruLimitea = diruLimitea;
 	}
 	
-	public Vector<Jarraitzailea> getJarraitzaileLista() {
+	public ArrayList<Jarraitzailea> getJarraitzaileLista() {
 		return niriLista;
 	}
 	
-	public void setJarraitzaileLista(Vector<Jarraitzailea> jarraitzaileLista) {
+	public void setJarraitzaileLista(ArrayList<Jarraitzailea> jarraitzaileLista) {
 		this.niriLista = jarraitzaileLista;
 	}
 	
-	public Vector<Jarraitzailea> getJarraitutakoLista() {
+	public ArrayList<Jarraitzailea> getJarraitutakoLista() {
 		return nikLista;
 	}
-	public void setJarraitutakoLista(Vector<Jarraitzailea> jarraitutakoLista) {
+	public void setJarraitutakoLista(ArrayList<Jarraitzailea> jarraitutakoLista) {
 		this.nikLista = jarraitutakoLista;
 	}
 	public void addTransaction(Transaction t) {
