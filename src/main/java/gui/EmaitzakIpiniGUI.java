@@ -260,7 +260,7 @@ public class EmaitzakIpiniGUI extends JFrame{
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("Events") + ": "
 									+ dateformat1.format(calendarAct.getTime()));
 						}
-						jComboBoxEvents.removeAllItems();s
+						jComboBoxEvents.removeAllItems();
 						System.out.println("Events " + events);
 
 						for (domain.Event ev : events) {
