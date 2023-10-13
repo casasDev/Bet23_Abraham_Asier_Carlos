@@ -987,9 +987,9 @@ public void open(boolean initializeMode){
 		if(resultB == false) {
 			return false;
 		}else if(new Date().compareTo(event.getEventDate())<0) {
-			TypedQuery<Quote> Qquery = db.createQuery("SELECT q FROM Quote q WHERE q.getQuestion().getEvent().getEventNumber() =?1", Quote.class);
-			Qquery.setParameter(1, event.getEventNumber()); 
-			List<Quote> listQUO = Qquery.getResultList();
+			TypedQuery<Quote> qquery = db.createQuery("SELECT q FROM Quote q WHERE q.getQuestion().getEvent().getEventNumber() =?1", Quote.class);
+			qquery.setParameter(1, event.getEventNumber()); 
+			List<Quote> listQUO = qquery.getResultList();
 			for(int j=0; j<listQUO.size(); j++) {
 				Quote quo = db.find(Quote.class, listQUO.get(j));
 				for(int i=0; i<quo.getApustuak().size(); i++) {
