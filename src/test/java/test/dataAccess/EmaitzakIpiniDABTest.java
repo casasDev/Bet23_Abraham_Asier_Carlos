@@ -6,6 +6,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import dataAccess.DataAccess;
 import domain.Event;
 import domain.Question;
 import domain.Quote;
@@ -15,7 +16,7 @@ public class EmaitzakIpiniDABTest {
 	
 	@Test
     public void testValidInput() throws EventNotFinished {
-		dataAccess.DataAccess dataAccess = new dataAccess.DataAccess();
+		DataAccess dataAccess = new DataAccess();
 
         Quote quote = new Quote();
         Question question = new Question();
@@ -32,7 +33,7 @@ public class EmaitzakIpiniDABTest {
 
     @Test(expected = EventNotFinished.class)
     public void testInvalidInput() throws EventNotFinished {
-    	dataAccess.DataAccess dataAccess = new dataAccess.DataAccess();
+    	DataAccess dataAccess = new DataAccess();
 		
 		Quote quote = new Quote();
         Question question = new Question();
