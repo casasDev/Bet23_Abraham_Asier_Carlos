@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -86,23 +87,22 @@ public class GertaeraEzabatuDABTest {
 				
 				//configure the state of the system (create object in the dabatase)
 				testDA.open();
-				ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
+				ev = null;
 				testDA.close();	
 				
-			
-				
+			    
 				//invoke System Under Test (sut)  
-				sut.gertaeraEzabatu(null);
+				boolean res=sut.gertaeraEzabatu(ev);
 					
-				fail();
-				
-			   } catch (NullPointerException e) {
+				assertFalse(res);				
+			   } catch (IllegalArgumentException e) {
 				// TODO Auto-generated catch block
 				// if the program goes to this point fail
-				   fail("Parametro es nulo, es decir no hay parametro");
+				   System.out.println("Parametro es nulo, es decir no hay parametro");
 			   } finally {
 					  //Remove the created objects in the database (cascade removing)   
 					testDA.open();
+					ev= testDA.addEventWithQuestion("yep",new Date(),"query2", 1);
 			          boolean b=testDA.removeEvent(ev);
 			          testDA.close();
 			      //     System.out.println("Finally "+b);          
@@ -142,7 +142,7 @@ public class GertaeraEzabatuDABTest {
 			   } catch (NullPointerException e) {
 				// TODO Auto-generated catch block
 				// if the program goes to this point fail
-				   fail("No hay evento en la base de datos");
+				   System.out.println("No hay evento en la base de datos");
 			   } finally {
 					  //Remove the created objects in the database (cascade removing)   
 					testDA.open();
@@ -151,7 +151,7 @@ public class GertaeraEzabatuDABTest {
 			      //     System.out.println("Finally "+b);          
 			        }
 			   }
-		
+		@Test
 		public void test4() {
 			try {
 				
@@ -176,10 +176,9 @@ public class GertaeraEzabatuDABTest {
 				
 				
 				//invoke System Under Test (sut)  
-				sut.gertaeraEzabatu(ev);
+				boolean res=sut.gertaeraEzabatu(ev);
 					
-				fail();
-				
+				assertFalse(res);				
 			   } catch (NullPointerException e) {
 				// TODO Auto-generated catch block
 				// if the program goes to this point fail
@@ -193,6 +192,7 @@ public class GertaeraEzabatuDABTest {
 			        }
 			   }
 		
+		@Test
 		public void test5() {
 			try {
 				
@@ -217,10 +217,9 @@ public class GertaeraEzabatuDABTest {
 				
 				
 				//invoke System Under Test (sut)  
-				sut.gertaeraEzabatu(ev);
+				boolean res =sut.gertaeraEzabatu(ev);
 					
-				fail();
-				
+				assertFalse(res);				
 			   } catch (NullPointerException e) {
 				// TODO Auto-generated catch block
 				// if the program goes to this point fail
@@ -234,6 +233,7 @@ public class GertaeraEzabatuDABTest {
 			        }
 			   }
 		
+		@Test
 		public void test6() {
 			try {
 				
@@ -258,14 +258,14 @@ public class GertaeraEzabatuDABTest {
 				
 				
 				//invoke System Under Test (sut)  
-				sut.gertaeraEzabatu(ev);
+				boolean res=sut.gertaeraEzabatu(ev);
 					
-				fail();
+				assertFalse(res);
 				
 			   } catch (NullPointerException e) {
 				// TODO Auto-generated catch block
 				// if the program goes to this point fail
-				   fail("No hay evento en la base de datos");
+				   fail("No hay fecha evento");
 			   } finally {
 					  //Remove the created objects in the database (cascade removing)   
 					testDA.open();
@@ -274,7 +274,7 @@ public class GertaeraEzabatuDABTest {
 			      //     System.out.println("Finally "+b);          
 			        }
 			   }
-		
+		@Test
 		public void test7() {
 			try {
 				
@@ -294,29 +294,30 @@ public class GertaeraEzabatuDABTest {
 				
 				//configure the state of the system (create object in the dabatase)
 				testDA.open();
-				ev = testDA.addEventWithQuestion(null,oneDate,queryText, betMinimum);
+				ev = testDA.addEventWithQuestion(eventText,oneDate,queryText, betMinimum);
 				ev.setEventNumber(null);
 				testDA.close();	
 				
 				
 				//invoke System Under Test (sut)  
-				sut.gertaeraEzabatu(ev);
-					
-				fail();
+			boolean res=sut.gertaeraEzabatu(ev);
+					assertFalse(res);
 				
 			   } catch (NullPointerException e) {
 				// TODO Auto-generated catch block
 				// if the program goes to this point fail
-				   fail("No hay evento en la base de datos");
+				   System.out.println("No hay numero de evento");
 			   } finally {
 					  //Remove the created objects in the database (cascade removing)   
 					testDA.open();
+						ev.setEventNumber(1);
 			          boolean b=testDA.removeEvent(ev);
 			          testDA.close();
 			      //     System.out.println("Finally "+b);          
 			        }
 			   }
 		
+		@Test
 		public void test8() {
 			try {
 				
@@ -342,14 +343,13 @@ public class GertaeraEzabatuDABTest {
 				
 				
 				//invoke System Under Test (sut)  
-				sut.gertaeraEzabatu(ev);
-					
-				fail();
+				boolean res =sut.gertaeraEzabatu(ev);
+				assertFalse(res);	
 				
 			   } catch (NullPointerException e) {
 				// TODO Auto-generated catch block
 				// if the program goes to this point fail
-				   fail("No hay evento en la base de datos");
+				   fail("No hay apuesta");
 			   } finally {
 					  //Remove the created objects in the database (cascade removing)   
 					testDA.open();
@@ -359,6 +359,7 @@ public class GertaeraEzabatuDABTest {
 			        }
 			   }
 		
+		@Test
 		public void test9() {
 			try {
 				
@@ -384,14 +385,13 @@ public class GertaeraEzabatuDABTest {
 				
 				
 				//invoke System Under Test (sut)  
-				sut.gertaeraEzabatu(ev);
-					
-				fail();
+				boolean res =sut.gertaeraEzabatu(ev);
+				assertFalse(res);	
 				
 			   } catch (NullPointerException e) {
 				// TODO Auto-generated catch block
 				// if the program goes to this point fail
-				   fail("No hay evento en la base de datos");
+				   fail("No hay deporte");
 			   } finally {
 					  //Remove the created objects in the database (cascade removing)   
 					testDA.open();
@@ -400,4 +400,6 @@ public class GertaeraEzabatuDABTest {
 			      //     System.out.println("Finally "+b);          
 			        }
 			   }
+		
+	
 }

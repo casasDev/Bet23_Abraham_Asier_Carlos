@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 
@@ -23,7 +24,7 @@ public class Event implements Serializable {
 	private String description; 
 	private Date eventDate;
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	private Vector<Question> questions=new Vector<Question>();
+	private ArrayList<Question> questions=new ArrayList<Question>();
 	@XmlIDREF
 	private Sport sport;
 	@XmlIDREF
@@ -31,11 +32,11 @@ public class Event implements Serializable {
 	@XmlIDREF
 	private Team kanpokoa;
 
-	public Vector<Question> getQuestions() {
+	public ArrayList<Question> getQuestions() {
 		return questions;
 	}
 
-	public void setQuestions(Vector<Question> questions) {
+	public void setQuestions(ArrayList<Question> questions) {
 		this.questions = questions;
 	}
 

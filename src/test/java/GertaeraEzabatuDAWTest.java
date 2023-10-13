@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -50,10 +51,9 @@ public class GertaeraEzabatuDAWTest {
 		testDA.close();
 		
 		
-			sut.gertaeraEzabatu(ev);
+			boolean res=sut.gertaeraEzabatu(ev);
 			
-			fail();
-			
+assertFalse(res);			
 		}catch(NullPointerException e) {
 			
 			assertTrue(false);
