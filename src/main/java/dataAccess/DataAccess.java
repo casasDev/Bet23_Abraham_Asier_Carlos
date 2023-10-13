@@ -803,15 +803,15 @@ public void open(boolean initializeMode){
 	}
 	
 	public Collection<Question> findQuestion(Event event){
-		TypedQuery<Question> Qquery = db.createQuery("SELECT q FROM Question q WHERE q.getEvent() =?1 ",Question.class);
-		Qquery.setParameter(1, event);
-		return Qquery.getResultList();
+		TypedQuery<Question> query = db.createQuery("SELECT q FROM Question q WHERE q.getEvent() =?1 ",Question.class);
+		query.setParameter(1, event);
+		return query.getResultList();
 	}
 	
 	public Collection<Quote> findQuote(Question question){
-		TypedQuery<Quote> Qquery = db.createQuery("SELECT q FROM Quote q WHERE q.getQuestion() =?1 ",Quote.class);
-		Qquery.setParameter(1, question);
-		return Qquery.getResultList();
+		TypedQuery<Quote> query = db.createQuery("SELECT q FROM Quote q WHERE q.getQuestion() =?1 ",Quote.class);
+		query.setParameter(1, question);
+		return query.getResultList();
 	}
 	
 	public void DiruaSartu(Registered u, Double dirua, Date data, String mota) {
