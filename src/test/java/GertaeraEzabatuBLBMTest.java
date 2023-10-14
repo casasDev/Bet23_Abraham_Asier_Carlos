@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.EntityManager;
+
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
@@ -348,4 +350,103 @@ public class GertaeraEzabatuBLBMTest {
 			
 			
 			   }
+     
+     /*DataAccess dataAccess=Mockito.mock(DataAccess.class);
+     Event mockedEvent=Mockito.mock(Event.class);*/
+
+     @Test
+     public void test8() {
+    	 
+    	 try {
+    	 		//define paramaters
+				String queryText="proba galdera";
+				Float betMinimum=new Float(2);
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				Date oneDate=null;;
+				try {
+					oneDate = sdf.parse("05/11/2023");
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			//configure Mock
+			Mockito.doReturn(oneDate).when(mockedEvent).getEventDate();
+			Mockito.doReturn(2).when(mockedEvent).getEventNumber();
+			ArrayList<Question> arrayPre =new ArrayList<Question>();
+			Question q =  (dataAccess).createQuestion(mockedEvent,queryText,betMinimum);
+		
+			q.setResult("2 a 0");
+			arrayPre.add(q);
+			Mockito.doReturn(arrayPre).when(mockedEvent).getQuestions();
+			
+         // Crear un objeto Event con pregunta con resultado nulo
+         Event event = new Event();
+         event.addQuestion(queryText,betMinimum);
+         
+         // Mock para EntityManager
+         EntityManager entityManager = Mockito.mock(EntityManager.class);
+         Mockito.doReturn(mockedEvent).when(entityManager.find(Event.class, event));
+         
+         
+         // Llamar al método y verificar el resultado
+         assertFalse(sut.gertaeraEzabatu(event));
+         
+     }catch (NullPointerException e) {
+				// TODO Auto-generated catch block
+				assertTrue(true);
+				} catch (QuestionAlreadyExist e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+     }
+     
+     @Test
+     public void test9() {
+    	try { 
+    	//define paramaters
+			String queryText="proba galdera";
+			Float betMinimum=new Float(2);
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;;
+			try {
+				oneDate = sdf.parse("05/11/2023");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			//configure Mock
+			Mockito.doReturn(oneDate).when(mockedEvent).getEventDate();
+			Mockito.doReturn(2).when(mockedEvent).getEventNumber();
+			ArrayList<Question> arrayPre =new ArrayList<Question>();
+			Question q =  (dataAccess).createQuestion(mockedEvent,queryText,betMinimum);
+			
+			q.setResult("2 a 0");
+			arrayPre.add(q);
+			Mockito.doReturn(arrayPre).when(mockedEvent).getQuestions();
+			
+         // Crear un objeto Event con fecha pasada
+         Event event = new Event();
+         event.addQuestion(queryText,betMinimum);
+         event.setEventDate(new Date(System.currentTimeMillis() - 10000));
+         mockedEvent.setEventDate(new Date(System.currentTimeMillis() - 10000));
+         
+         // Mock para EntityManager
+         EntityManager entityManager = Mockito.mock(EntityManager.class);
+         Mockito.doReturn(mockedEvent).when(entityManager.find(Event.class, event));
+           
+         
+         // Llamar al método y verificar el resultado
+         assertFalse(sut.gertaeraEzabatu(event));
+         
+    	} catch (NullPointerException e) {
+				// TODO Auto-generated catch block
+				assertTrue(true);
+				} catch (QuestionAlreadyExist e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+     }
 }
