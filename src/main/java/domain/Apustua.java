@@ -87,10 +87,11 @@ public class Apustua implements Serializable{
 	
 	@Override
 	public boolean equals(Object o) {
-		Apustua a = (Apustua) o; 
-		if(a==null) {
-			return false;
+		
+		if (!(o instanceof Apustua)) {
+		    return false;
 		}
+		Apustua a = (Apustua) o; 
 		return this.getApostuaNumber().equals(a.getApostuaNumber()); 
 	}
 	
