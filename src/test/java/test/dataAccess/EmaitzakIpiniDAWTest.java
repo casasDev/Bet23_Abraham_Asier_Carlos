@@ -17,16 +17,22 @@ public class EmaitzakIpiniDAWTest {
 	@Test
 	public void testEventFinished() throws EventNotFinished {
 		DataAccess dataAccess = new DataAccess();
-		
-		Quote quote = new Quote();
-        Question question = new Question();
-        Event event = new Event();
-        
-        event.setEventDate(new Date(System.currentTimeMillis() - 100000));
-        question.setEvent(event);
-        quote.setQuestion(question);
+	    dataAccess.initializeDB();
+	    
+	    Quote quote = new Quote();
+	    quote.setForecast("someForecastValue");
+
+	    Event event = new Event();
+	    event.setEventDate(new Date(System.currentTimeMillis() - 100000));
+
+	    Question question = new Question();
+	    question.setEvent(event);
+
+	    quote.setQuestion(question);
         
         dataAccess.EmaitzakIpini(quote);
+
+		
         
         assertNotNull(quote.getQuestion().getResult());
 	}
@@ -34,14 +40,18 @@ public class EmaitzakIpiniDAWTest {
 	@Test(expected = EventNotFinished.class)
 	public void testEventNotFinished() throws EventNotFinished {
 		DataAccess dataAccess = new DataAccess();
-		
-		Quote quote = new Quote();
-        Question question = new Question();
-        Event event = new Event();
-        
-        event.setEventDate(new Date(System.currentTimeMillis() + 100000));
-        question.setEvent(event);
-        quote.setQuestion(question);
+	    dataAccess.initializeDB();
+	    
+	    Quote quote = new Quote();
+	    quote.setForecast("someForecastValue");
+
+	    Event event = new Event();
+	    event.setEventDate(new Date(System.currentTimeMillis() + 100000));
+
+	    Question question = new Question();
+	    question.setEvent(event);
+
+	    quote.setQuestion(question);
         
         dataAccess.EmaitzakIpini(quote);
 	}
