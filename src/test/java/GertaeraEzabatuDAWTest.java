@@ -50,7 +50,7 @@ public class GertaeraEzabatuDAWTest {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date oneDate=null;;
 		try {
-			oneDate = sdf.parse("05/10/2022");
+			oneDate = sdf.parse("05/10/2025");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -58,6 +58,7 @@ public class GertaeraEzabatuDAWTest {
 		
 		testDA.open();
 		ev = testDA.addEventWithQuestion(eventText,oneDate,null, betMinimum);
+		testDA.addSport("sport1");
 		testDA.close();
 		
 		
@@ -97,7 +98,7 @@ assertFalse(res);
 		}
 		
 		testDA.open();
-		ev = testDA.addEventWithQuestion(eventText,new Date(),queryText, betMinimum);
+		ev = testDA.addEventWithQuestion(eventText,oneDate,queryText, betMinimum);
 		testDA.close();
 		
 		
