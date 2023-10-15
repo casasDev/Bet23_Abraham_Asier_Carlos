@@ -11,6 +11,7 @@ import javax.persistence.Persistence;
 import configuration.ConfigXML;
 import domain.Event;
 import domain.Question;
+import domain.Sport;
 import domain.Team;
 
 public class TestDataAccess {
@@ -89,6 +90,28 @@ public class TestDataAccess {
 			} else 
 			return false;
 			
+		}
+		public Sport addSport(String spo) {
+			Sport s = null;
+			db.getTransaction().begin();
+			try {
+				s = new Sport(spo);
+				db.persist(s);
+				db.getTransaction().commit();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			return s;
+		}
+		public boolean removeSport(String spo) {
+			Sport s = db.find(Sport.class, spo);
+			if(s!=null) {
+				db.getTransaction().begin();
+				db.remove(s);
+				db.getTransaction().commit();
+				return true;
+			}
+			else return false;
 		}
 }
 

@@ -730,6 +730,7 @@ public void open(boolean initializeMode){
 	
 	public boolean gertaerakSortu(String description,Date eventDate, String sport) {
 		boolean b = true;
+		if(db.getTransaction().isActive()) db.getTransaction().commit(); //Esta línea evita errores
 		db.getTransaction().begin();
 		Sport spo =db.find(Sport.class, sport);
 		if(spo!=null) {
@@ -753,6 +754,7 @@ public void open(boolean initializeMode){
 			return false;
 		}
 		db.getTransaction().commit();
+		
 		return b;
 	}
 	
@@ -812,6 +814,7 @@ public void open(boolean initializeMode){
 		TypedQuery<Quote> query = db.createQuery("SELECT q FROM Quote q WHERE q.getQuestion() =?1 ",Quote.class);
 		query.setParameter(1, question);
 		return query.getResultList();
+		
 	}
 	
 	public void DiruaSartu(Registered u, Double dirua, Date data, String mota) {
