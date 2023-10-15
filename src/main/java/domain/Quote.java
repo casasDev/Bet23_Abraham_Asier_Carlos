@@ -108,12 +108,13 @@ public class Quote implements Serializable{
 	
 	@Override
 	public boolean equals(Object o) {
-		if(o != null) {
+		
+	   	 if (!(o instanceof Quote)) {
+	   	 	return false;
+	   	 }
+	  
 			Quote q = (Quote)o;
 			return this.getQuoteNumber()==q.getQuoteNumber();
-		} else {
-			return false;
-		}
 	}
 	
 	@Override
