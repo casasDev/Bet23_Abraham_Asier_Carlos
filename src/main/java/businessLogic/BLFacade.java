@@ -78,7 +78,7 @@ public interface BLFacade  {
 	
 	@WebMethod public Collection<Quote> findQuote(Question question); 
 	
-	@WebMethod public boolean apustuaEgin(Registered u, ArrayList<Quote> q, Double balioa, Integer apustuaGalarazi); 
+	@WebMethod public boolean apustuaEgin(Registered u, List<Quote> q, Double balioa, Integer apustuaGalarazi); 
 	
 	@WebMethod public List<Apustua> findApustua(Registered u); 
 	
