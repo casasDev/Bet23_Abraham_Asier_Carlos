@@ -7,11 +7,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import org.junit.Test;
 
 import dataAccess.DataAccess;
 import domain.Event;
 import domain.Question;
+import domain.Quote;
+import domain.Sport;
 import exceptions.QuestionAlreadyExist;
 import test.dataAccess.TestDataAccess;
 
@@ -401,5 +406,102 @@ public class GertaeraEzabatuDABTest {
 			        }
 			   }
 		
-	
+		@Test
+	    public void test10() {
+			try {
+				String eventText="event1";
+				String queryText="query1";
+				Float betMinimum=new Float(2);
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				Date oneDate=null;;
+				try {
+					oneDate = sdf.parse("05/10/2025");
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				testDA.open();
+				ev = testDA.addEventWithQuestion(eventText,oneDate,queryText, betMinimum);
+				Question question1 = new Question();
+		        question1.setResult(null);
+		        Question question2 = new Question();
+		        question2.setResult(null);
+		        ev.addQuestion(queryText,betMinimum);
+		        ev.addQuestion(queryText,betMinimum);
+				testDA.close();
+		        
+				
+		        
+		        // Llama al método gertaeraEzabatu y verifica el resultado
+		        boolean resultado = sut.gertaeraEzabatu(ev);
+		        assertFalse(resultado);
+		        
+				}
+					catch(NullPointerException e) {
+				
+				fail();
+			}
+				
+				finally {
+					  //Remove the created objects in the database (cascade removing)   
+					testDA.open();
+			         boolean b=testDA.removeEvent(ev);
+			          testDA.close();
+			         System.out.println("Finally "+b);          
+			        }
+	    }
+		
+		@Test
+	    public void test11() {
+			
+			try {
+				String eventText="event1";
+				String queryText="query1";
+				Float betMinimum=new Float(2);
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				Date oneDate=null;;
+				try {
+					oneDate = sdf.parse("05/10/2022");
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				testDA.open();
+				ev = testDA.addEventWithQuestion(eventText,oneDate,queryText, betMinimum);
+				Question question1 = new Question();
+		        question1.setResult("nbv");
+		        Question question2 = new Question();
+		        question2.setResult("123");
+		        ev.addQuestion(queryText,betMinimum);
+		        ev.addQuestion(queryText,betMinimum);
+		        Sport sport = new Sport();
+		        ev.setSport(sport);
+				testDA.close();
+		        
+		        
+		        
+		        // Llama al método gertaeraEzabatu y verifica el resultado
+		        boolean resultado = sut.gertaeraEzabatu(ev);
+
+		        assertFalse(resultado);
+			}
+			catch(NullPointerException e) {
+
+		fail();
+		}
+		        
+		        finally {
+					  //Remove the created objects in the database (cascade removing)   
+					testDA.open();
+			         boolean b=testDA.removeEvent(ev);
+			          testDA.close();
+			         System.out.println("Finally "+b);          
+			        }
+	    
+		
+		}
 }

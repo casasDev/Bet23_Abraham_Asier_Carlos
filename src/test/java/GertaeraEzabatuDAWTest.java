@@ -7,13 +7,23 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.jdo.Query;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import org.junit.Test;
+import org.mockito.Mockito;
+
+import com.sun.tools.javac.util.List;
 
 import configuration.ConfigXML;
 
 import dataAccess.DataAccess;
+import domain.ApustuAnitza;
 import domain.Event;
 import domain.Question;
+import domain.Quote;
+import domain.Sport;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
@@ -80,7 +90,7 @@ assertFalse(res);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date oneDate=null;;
 		try {
-			oneDate = sdf.parse("05/10/2022");
+			oneDate = sdf.parse("05/10/2024");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -121,14 +131,14 @@ assertFalse(res);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date oneDate=null;;
 		try {
-			oneDate = sdf.parse("05/10/2022");
+			oneDate = sdf.parse("05/10/2024");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		testDA.open();
-		ev = testDA.addEventWithQuestion(eventText,new Date(),queryText, 0);
+		ev = testDA.addEventWithQuestion(eventText,oneDate,queryText, 0);
 		testDA.close();
 		
 		
@@ -162,14 +172,14 @@ assertFalse(res);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date oneDate=null;;
 		try {
-			oneDate = sdf.parse("05/10/2022");
+			oneDate = sdf.parse("05/11/2023");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		testDA.open();
-		ev = testDA.addEventWithQuestion(eventText,new Date(),queryText, betMinimum);
+		ev = testDA.addEventWithQuestion(eventText,oneDate,queryText, betMinimum);
 		testDA.close();
 		
 		
@@ -191,5 +201,113 @@ assertFalse(res);
 	        }
 		
 	}
+	
+	@Test
+    public void test5() {
+		
+		try {
+		String eventText="event1";
+		String queryText="query1";
+		Float betMinimum=new Float(2);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date oneDate=null;;
+		try {
+			oneDate = sdf.parse("05/10/2025");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		testDA.open();
+		ev = testDA.addEventWithQuestion(eventText,oneDate,queryText, betMinimum);
+		Question question1 = new Question();
+        question1.setResult(null);
+        Question question2 = new Question();
+        question2.setResult(null);
+        ev.addQuestion(queryText,betMinimum);
+        ev.addQuestion(queryText,betMinimum);
+		testDA.close();
+        
+		
+        
+        // Llama al método gertaeraEzabatu y verifica el resultado
+        boolean resultado = sut.gertaeraEzabatu(ev);
+        assertFalse(resultado);
+        
+		}
+			catch(NullPointerException e) {
+		
+		fail();
+	}
+		
+		finally {
+			  //Remove the created objects in the database (cascade removing)   
+			testDA.open();
+	         boolean b=testDA.removeEvent(ev);
+	          testDA.close();
+	         System.out.println("Finally "+b);          
+	        }
+    }
+	
+	@Test
+    public void test6() {
+        
+		try {
+		String eventText="event1";
+		String queryText="query1";
+		Float betMinimum=new Float(2);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date oneDate=null;;
+		try {
+			oneDate = sdf.parse("05/10/2022");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		testDA.open();
+		ev = testDA.addEventWithQuestion(eventText,oneDate,queryText, betMinimum);
+		Question question1 = new Question();
+        question1.setResult("nbv");
+        Question question2 = new Question();
+        question2.setResult("123");
+        ev.addQuestion(queryText,betMinimum);
+        ev.addQuestion(queryText,betMinimum);
+        Sport sport = new Sport();
+        ev.setSport(sport);
+        Class<EntityManager> entityManager = EntityManager.class;
+        TypedQuery<Quote> query;
+     // Simular la base de datos con cotizaciones y apuestas pero ni idea
+        //Event eventF=(entityManager.find(Event.class, ev));
+        //query  =entityManager.createQuery("yepa", (Quote.class));
+        //query = (query.setParameter(1, ev.getEventNumber()));
+        //List<Quote> listQUO = (List<Quote>) query.getResultList();
+        //Quote qu = (entityManager.find(Quote.class, listQUO.get(0)));
+       // ApustuAnitza apustuAnitza = qu.getApustuak().get(0).getApustuAnitza();
+        //ApustuAnitza ap1 = entityManager.find(ApustuAnitza.class, apustuAnitza.getApustuAnitzaNumber());
+		testDA.close();
+        
+        
+        
+        // Llama al método gertaeraEzabatu y verifica el resultado
+        boolean resultado = sut.gertaeraEzabatu(ev);
+        // Agrega aquí las afirmaciones necesarias
+        assertFalse(resultado);
+	}
+	catch(NullPointerException e) {
+
+fail();
+}
+        
+        finally {
+			  //Remove the created objects in the database (cascade removing)   
+			testDA.open();
+	         boolean b=testDA.removeEvent(ev);
+	          testDA.close();
+	         System.out.println("Finally "+b);          
+	        }
+    }
 
 }
