@@ -434,7 +434,7 @@ public class GertaeraEzabatuDABTest {
 		        
 				
 		        
-		        // Llama al método gertaeraEzabatu y verifica el resultado
+		        // Llama al mÃ©todo gertaeraEzabatu y verifica el resultado
 		        boolean resultado = sut.gertaeraEzabatu(ev);
 		        assertFalse(resultado);
 		        
@@ -484,7 +484,7 @@ public class GertaeraEzabatuDABTest {
 		        
 		        
 		        
-		        // Llama al método gertaeraEzabatu y verifica el resultado
+		        // Llama al mÃ©todo gertaeraEzabatu y verifica el resultado
 		        boolean resultado = sut.gertaeraEzabatu(ev);
 
 		        assertFalse(resultado);
