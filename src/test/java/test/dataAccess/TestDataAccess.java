@@ -1,5 +1,6 @@
 package test.dataAccess;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -82,6 +83,15 @@ public class TestDataAccess {
 				}
 				return ev;
 	    }
+		
+		public void añadirRespuestas(ArrayList<Question> l) {
+			int i;
+			for(i=0;i<l.size();i++) {
+				Question p = l.get(i);
+				p.setResult("yepa");
+			}
+			
+		}
 		public boolean existQuestion(Event ev,Question q) {
 			System.out.println(">> DataAccessTest: existQuestion");
 			Event e = db.find(Event.class, ev.getEventNumber());
