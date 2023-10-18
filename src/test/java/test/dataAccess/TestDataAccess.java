@@ -84,7 +84,7 @@ public class TestDataAccess {
 				return ev;
 	    }
 		
-		public void añadirRespuestas(ArrayList<Question> l) {
+		public void anadirRespuestas(ArrayList<Question> l) {
 			int i;
 			for(i=0;i<l.size();i++) {
 				Question p = l.get(i);
