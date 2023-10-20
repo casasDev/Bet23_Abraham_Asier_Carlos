@@ -1,5 +1,6 @@
 package test.dataAccess;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +12,7 @@ import javax.persistence.Persistence;
 import configuration.ConfigXML;
 import domain.Event;
 import domain.Question;
+import domain.Sport;
 import domain.Team;
 
 public class TestDataAccess {
@@ -81,6 +83,15 @@ public class TestDataAccess {
 				}
 				return ev;
 	    }
+		
+		public void anadirRespuestas(ArrayList<Question> l) {
+			int i;
+			for(i=0;i<l.size();i++) {
+				Question p = l.get(i);
+				p.setResult("yepa");
+			}
+			
+		}
 		public boolean existQuestion(Event ev,Question q) {
 			System.out.println(">> DataAccessTest: existQuestion");
 			Event e = db.find(Event.class, ev.getEventNumber());
@@ -89,6 +100,28 @@ public class TestDataAccess {
 			} else 
 			return false;
 			
+		}
+		public Sport addSport(String spo) {
+			Sport s = null;
+			db.getTransaction().begin();
+			try {
+				s = new Sport(spo);
+				db.persist(s);
+				db.getTransaction().commit();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			return s;
+		}
+		public boolean removeSport(String spo) {
+			Sport s = db.find(Sport.class, spo);
+			if(s!=null) {
+				db.getTransaction().begin();
+				db.remove(s);
+				db.getTransaction().commit();
+				return true;
+			}
+			else return false;
 		}
 }
 

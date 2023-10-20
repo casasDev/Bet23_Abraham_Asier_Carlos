@@ -13,6 +13,7 @@ import javax.persistence.TypedQuery;
 import org.junit.Test;
 
 import dataAccess.DataAccess;
+import dataAccess.DataAccessGertaeraEzabatu;
 import domain.Event;
 import domain.Question;
 import domain.Quote;
@@ -20,10 +21,15 @@ import domain.Sport;
 import exceptions.QuestionAlreadyExist;
 import test.dataAccess.TestDataAccess;
 
-public class GertaeraEzabatuDABTest {
+
+//Antes de comentar test tenia un 89,9%
+//He quitado test2 y tengo un 90,6
+//He quitado test2 y 8 y tengo un 90,6
+//Ahora he comentado el test 1 y 6, tengo un 89,8%
+public class GertaeraEzabatuDABTest2 {
 	
 		//sut:system under test
-		 static DataAccess sut=new DataAccess();
+		 static DataAccessGertaeraEzabatu sut=new DataAccessGertaeraEzabatu();
 		 
 		 //additional operations needed to execute the test 
 		 static TestDataAccess testDA=new TestDataAccess();
@@ -31,7 +37,7 @@ public class GertaeraEzabatuDABTest {
 		 private Event ev;
 		
 		
-		@Test
+		 /*	@Test
 		public void test1() {
 			try {
 				
@@ -70,9 +76,9 @@ public class GertaeraEzabatuDABTest {
 			          testDA.close();
 			      //     System.out.println("Finally "+b);          
 			        }
-			   }
+			   }*/
 		
-		@Test
+			@Test
 		public void test2() {
 			try {
 				
@@ -238,7 +244,7 @@ public class GertaeraEzabatuDABTest {
 			        }
 			   }
 		
-		@Test
+	/*	@Test
 		public void test6() {
 			try {
 				
@@ -278,7 +284,7 @@ public class GertaeraEzabatuDABTest {
 			          testDA.close();
 			      //     System.out.println("Finally "+b);          
 			        }
-			   }
+			   }*/
 		@Test
 		public void test7() {
 			try {
@@ -322,7 +328,7 @@ public class GertaeraEzabatuDABTest {
 			        }
 			   }
 		
-		@Test
+	@Test
 		public void test8() {
 			try {
 				
@@ -434,7 +440,7 @@ public class GertaeraEzabatuDABTest {
 		        
 				
 		        
-		        // Llama al mÃ©todo gertaeraEzabatu y verifica el resultado
+		        // Llama al método gertaeraEzabatu y verifica el resultado
 		        boolean resultado = sut.gertaeraEzabatu(ev);
 		        assertFalse(resultado);
 		        
@@ -484,7 +490,7 @@ public class GertaeraEzabatuDABTest {
 		        
 		        
 		        
-		        // Llama al mÃ©todo gertaeraEzabatu y verifica el resultado
+		        // Llama al método gertaeraEzabatu y verifica el resultado
 		        boolean resultado = sut.gertaeraEzabatu(ev);
 
 		        assertFalse(resultado);

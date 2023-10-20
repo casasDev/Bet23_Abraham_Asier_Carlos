@@ -231,7 +231,7 @@ assertFalse(res);
         
 		
         
-        // Llama al método gertaeraEzabatu y verifica el resultado
+        // Llama al mÃ©todo gertaeraEzabatu y verifica el resultado
         boolean resultado = sut.gertaeraEzabatu(ev);
         assertFalse(resultado);
         
@@ -291,9 +291,9 @@ assertFalse(res);
         
         
         
-        // Llama al método gertaeraEzabatu y verifica el resultado
+        // Llama al mÃ©todo gertaeraEzabatu y verifica el resultado
         boolean resultado = sut.gertaeraEzabatu(ev);
-        // Agrega aquí las afirmaciones necesarias
+        // Agrega aquÃ­ las afirmaciones necesarias
         assertFalse(resultado);
 	}
 	catch(NullPointerException e) {

@@ -169,9 +169,9 @@ public class BLFacadeImplementation  implements BLFacade {
     	return b;
     }
     @WebMethod	
-    public void storeQuote(String forecast, Double Quote, Question question) throws QuoteAlreadyExist {
+    public void storeQuote(String forecast, Double quote, Question question) throws QuoteAlreadyExist {
     	dbManager.open(false);
-    	dbManager.storeQuote(forecast, Quote, question);
+    	dbManager.storeQuote(forecast, quote, question);
     	dbManager.close();
     }
     @WebMethod	
@@ -374,7 +374,7 @@ public class BLFacadeImplementation  implements BLFacade {
 		return team;
 	}
 
-	public boolean ApustuaEgin(Registered u, ArrayList<Quote> q, Double balioa, Integer apustuaGalarazi) {
+	public boolean apustuaEgin(Registered u, ArrayList<Quote> q, Double balioa, Integer apustuaGalarazi) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -384,14 +384,14 @@ public class BLFacadeImplementation  implements BLFacade {
 		
 	}
 
-	public boolean apustuaEgin(Registered u, ArrayList<Quote> q, Double balioa, Integer apustuaGalarazi) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	public void emaitzakIpini(Quote quote) throws EventNotFinished {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public boolean apustuaEgin(Registered u, List<Quote> q, Double balioa, Integer apustuaGalarazi) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
 

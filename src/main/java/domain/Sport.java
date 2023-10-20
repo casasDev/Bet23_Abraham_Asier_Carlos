@@ -72,10 +72,11 @@ public class Sport implements Serializable{
 	
 	@Override
 	public boolean equals(Object o) {
-		Sport sp = (Sport) o;
-		if(sp==null) {
-			return false;
+		
+		if (!(o instanceof Sport)) {
+		    return false;
 		}
+		Sport sp = (Sport) o;
 		return this.izena.equals(sp.getIzena());
 	}
 	
