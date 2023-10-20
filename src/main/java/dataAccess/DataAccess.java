@@ -40,6 +40,8 @@ import exceptions.QuoteAlreadyExist;
  * It implements the data access to the objectDb database
  */
 public class DataAccess  {
+	private static final String DIRUA_SARTU = "DiruaSartu";
+	private static final String ae = "ApustuaEgin";
 	protected static EntityManager  db;
 	protected static EntityManagerFactory emf;
 
@@ -220,31 +222,35 @@ public class DataAccess  {
 			Registered reg2 = new Registered("andrea", "123", 1111);
 			Registered reg3 = new Registered("markel", "123", 1111);
 			Registered reg4 = new Registered("mikel", "123", 1111);
-									
+			
+			String quienGanadorPreg= "";
 			if (Locale.getDefault().equals(new Locale("es"))) {
-				q1=ev1.addQuestion("¿Quién ganará el partido?",1);
+				quienGanadorPreg="¿Quién ganará el partido?";
+				q1=ev1.addQuestion(quienGanadorPreg,1);
 				q2=ev1.addQuestion("¿Quién meterá el primer gol?",2);
-				q3=ev11.addQuestion("¿Quién ganará el partido?",1);
+				q3=ev11.addQuestion(quienGanadorPreg,1);
 				q4=ev11.addQuestion("¿Cuántos goles se marcarán?",2);
-				q5=ev17.addQuestion("¿Quién ganará el partido?",1);
+				q5=ev17.addQuestion(quienGanadorPreg,1);
 				q6=ev17.addQuestion("¿Habrá goles en la primera parte?",2);
 				
 			}
 			else if (Locale.getDefault().equals(new Locale("en"))) {
-				q1=ev1.addQuestion("Who will win the match?",1);
+				quienGanadorPreg="Who will win the match?";
+				q1=ev1.addQuestion(quienGanadorPreg,1);
 				q2=ev1.addQuestion("Who will score first?",2);
-				q3=ev11.addQuestion("Who will win the match?",1);
+				q3=ev11.addQuestion(quienGanadorPreg,1);
 				q4=ev11.addQuestion("How many goals will be scored in the match?",2);
-				q5=ev17.addQuestion("Who will win the match?",1);
+				q5=ev17.addQuestion(quienGanadorPreg,1);
 				q6=ev17.addQuestion("Will there be goals in the first half?",2);
 				
 			}			
 			else {
-				q1=ev1.addQuestion("Zeinek irabaziko du partidua?",1);
+				quienGanadorPreg="Zeinek irabaziko du partidua?";
+				q1=ev1.addQuestion(quienGanadorPreg,1);
 				q2=ev1.addQuestion("Zeinek sartuko du lehenengo gola?",2);
-				q3=ev11.addQuestion("Zeinek irabaziko du partidua?",1);
+				q3=ev11.addQuestion(quienGanadorPreg,1);
 				q4=ev11.addQuestion("Zenbat gol sartuko dira?",2);
-				q5=ev17.addQuestion("Zeinek irabaziko du partidua?",1);
+				q5=ev17.addQuestion(quienGanadorPreg,1);
 				q6=ev17.addQuestion("Golak sartuko dira lehenengo zatian?",2);
 				
 				
@@ -365,20 +371,17 @@ public class DataAccess  {
 			
 			
 			
-			
-			
-			
-			Transaction t1 = new Transaction(reg1, apA1.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t3 = new Transaction(reg2, apA4.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t4 = new Transaction(reg3, apA5.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t5 = new Transaction(reg4, apA3.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t6 = new Transaction(reg4, apA6.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t7 = new Transaction(reg1, apA7.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t8 = new Transaction(reg1, apA8.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t9 = new Transaction(reg2, apA9.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t10 = new Transaction(reg2, apA10.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t11 = new Transaction(reg3, apA11.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t12 = new Transaction(reg3, apA12.getBalioa(), new Date(), "ApustuaEgin");
+			Transaction t1 = new Transaction(reg1, apA1.getBalioa(), new Date(), ae);
+			Transaction t3 = new Transaction(reg2, apA4.getBalioa(), new Date(), ae);
+			Transaction t4 = new Transaction(reg3, apA5.getBalioa(), new Date(), ae);
+			Transaction t5 = new Transaction(reg4, apA3.getBalioa(), new Date(), ae);
+			Transaction t6 = new Transaction(reg4, apA6.getBalioa(), new Date(), ae);
+			Transaction t7 = new Transaction(reg1, apA7.getBalioa(), new Date(), ae);
+			Transaction t8 = new Transaction(reg1, apA8.getBalioa(), new Date(), ae);
+			Transaction t9 = new Transaction(reg2, apA9.getBalioa(), new Date(), ae);
+			Transaction t10 = new Transaction(reg2, apA10.getBalioa(), new Date(), ae);
+			Transaction t11 = new Transaction(reg3, apA11.getBalioa(), new Date(), ae);
+			Transaction t12 = new Transaction(reg3, apA12.getBalioa(), new Date(), ae);
 			
 			reg1.addTransaction(t1);
 			reg2.addTransaction(t3);
@@ -594,10 +597,10 @@ public class DataAccess  {
 			
 			db.getTransaction().commit();
 			
-			this.DiruaSartu(reg1, 50.0, new Date(), "DiruaSartu");
-			this.DiruaSartu(reg2, 50.0, new Date(), "DiruaSartu");
-			this.DiruaSartu(reg3, 50.0, new Date(), "DiruaSartu");
-			this.DiruaSartu(reg4, 50.0, new Date(), "DiruaSartu");
+			this.DiruaSartu(reg1, 50.0, new Date(), DIRUA_SARTU);
+			this.DiruaSartu(reg2, 50.0, new Date(), DIRUA_SARTU);
+			this.DiruaSartu(reg3, 50.0, new Date(), DIRUA_SARTU);
+			this.DiruaSartu(reg4, 50.0, new Date(), DIRUA_SARTU);
 			
 			System.out.println("Db initialized");
 		}
@@ -846,7 +849,7 @@ public void open(boolean initializeMode){
 			}
 			apustuAnitza.setApustuKopia(apustuBikoitzaGalarazi);
 			user.updateDiruKontua(-balioa);
-			Transaction t = new Transaction(user, balioa, new Date(), "ApustuaEgin"); 
+			Transaction t = new Transaction(user, balioa, new Date(), ae); 
 			user.addApustuAnitza(apustuAnitza);
 			for(Apustua a: apustuAnitza.getApustuak()) {
 				Apustua apu = db.find(Apustua.class, a.getApostuaNumber());
