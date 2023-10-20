@@ -1050,8 +1050,7 @@ public void open(boolean initializeMode){
 	
 	public List<Event> getEventsAll() {	
 		TypedQuery<Event> query = db.createQuery("SELECT ev FROM Event ev ",Event.class);   
-		List<Event> events = query.getResultList();
-	 	return events;
+		return query.getResultList();
 	}
 	
 	
@@ -1135,8 +1134,7 @@ public void open(boolean initializeMode){
 	
 	public List<Team> getAllTeams() {	
 		TypedQuery<Team> query = db.createQuery("SELECT t FROM Team t ",Team.class);   
-		List<Team> teams = query.getResultList();
-	 	return teams;
+		return query.getResultList();
 	}
 	
 	public void jarraituTaldea(Registered u, Team t) {
