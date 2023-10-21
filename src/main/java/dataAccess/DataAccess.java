@@ -838,13 +838,7 @@ public void open(boolean initializeMode){
 			db.getTransaction().begin();
 			ApustuAnitza apustuAnitza = new ApustuAnitza(user, balioa);
 			db.persist(apustuAnitza);
-			for(Quote quo: q2) {
-				Quote kuote = db.find(Quote.class, quo.getQuoteNumber());
-				Apustua ap = new Apustua(apustuAnitza, kuote);
-				db.persist(ap);
-				apustuAnitza.addApustua(ap);
-				kuote.addApustua(ap);
-			}
+			forListaQuotes(q2, apustuAnitza);
 			db.getTransaction().commit();
 			db.getTransaction().begin();
 			if(apustuBikoitzaGalarazi==-1) {
@@ -854,37 +848,57 @@ public void open(boolean initializeMode){
 			user.updateDiruKontua(-balioa);
 			Transaction t = new Transaction(user, balioa, new Date(), ae); 
 			user.addApustuAnitza(apustuAnitza);
-			for(Apustua a: apustuAnitza.getApustuak()) {
-				Apustua apu = db.find(Apustua.class, a.getApostuaNumber());
-				Quote q = db.find(Quote.class, apu.getKuota().getQuoteNumber());
-				Sport spo =q.getQuestion().getEvent().getSport();
-				spo.setApustuKantitatea(spo.getApustuKantitatea()+1);
-				
-			}
+			forListaApuestas(apustuAnitza);
 			user.addTransaction(t);
 			db.persist(t);
 			db.getTransaction().commit();
-			for(Jarraitzailea reg:user.getJarraitzaileLista()) {
-				Jarraitzailea erab=db.find(Jarraitzailea.class, reg.getJarraitzaileaNumber());
-				b=true;
-				for(ApustuAnitza apu: erab.getNork().getApustuAnitzak()) {
-					if(apu.getApustuKopia().equals(apustuAnitza.getApustuKopia())) {
-						b=false;
-					}
-				}
-				if(b) {
-					if(erab.getNork().getDiruLimitea()<balioa) {
-						this.ApustuaEgin(erab.getNork(), q2, erab.getNork().getDiruLimitea(), apustuBikoitzaGalarazi);
-					}else{
-						this.ApustuaEgin(erab.getNork(), q2, balioa, apustuBikoitzaGalarazi);
-					}
-				}
-			}
+			forJarraitzaileak(q2, balioa, apustuBikoitzaGalarazi, user, apustuAnitza);
 			return true; 
 		}else{
 			return false; 
 		}
 		
+	}
+
+	private void forJarraitzaileak(Vector<Quote> q2, Double balioa, Integer apustuBikoitzaGalarazi, Registered user,
+			ApustuAnitza apustuAnitza) {
+		Boolean b;
+		for(Jarraitzailea reg:user.getJarraitzaileLista()) {
+			Jarraitzailea erab=db.find(Jarraitzailea.class, reg.getJarraitzaileaNumber());
+			b=true;
+			for(ApustuAnitza apu: erab.getNork().getApustuAnitzak()) {
+				if(apu.getApustuKopia().equals(apustuAnitza.getApustuKopia())) {
+					b=false;
+				}
+			}
+			if(b) {
+				if(erab.getNork().getDiruLimitea()<balioa) {
+					this.ApustuaEgin(erab.getNork(), q2, erab.getNork().getDiruLimitea(), apustuBikoitzaGalarazi);
+				}else{
+					this.ApustuaEgin(erab.getNork(), q2, balioa, apustuBikoitzaGalarazi);
+				}
+			}
+		}
+	}
+
+	private void forListaApuestas(ApustuAnitza apustuAnitza) {
+		for(Apustua a: apustuAnitza.getApustuak()) {
+			Apustua apu = db.find(Apustua.class, a.getApostuaNumber());
+			Quote q = db.find(Quote.class, apu.getKuota().getQuoteNumber());
+			Sport spo =q.getQuestion().getEvent().getSport();
+			spo.setApustuKantitatea(spo.getApustuKantitatea()+1);
+			
+		}
+	}
+
+	private void forListaQuotes(Vector<Quote> q2, ApustuAnitza apustuAnitza) {
+		for(Quote quo: q2) {
+			Quote kuote = db.find(Quote.class, quo.getQuoteNumber());
+			Apustua ap = new Apustua(apustuAnitza, kuote);
+			db.persist(ap);
+			apustuAnitza.addApustua(ap);
+			kuote.addApustua(ap);
+		}
 	}
 	
 	public void apustuaEzabatu(Registered user1, ApustuAnitza ap) {
