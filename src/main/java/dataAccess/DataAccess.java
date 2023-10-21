@@ -833,7 +833,6 @@ public void open(boolean initializeMode){
 	
 	public boolean ApustuaEgin(Registered u, Vector<Quote> q2, Double balioa, Integer apustuBikoitzaGalarazi) {
 		Registered user = (Registered) db.find(Registered.class, u.getUsername());
-		Boolean b;
 		if(user.getDirukop()>=balioa) {
 			db.getTransaction().begin();
 			ApustuAnitza apustuAnitza = new ApustuAnitza(user, balioa);
