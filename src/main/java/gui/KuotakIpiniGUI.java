@@ -279,10 +279,7 @@ public class KuotakIpiniGUI extends JFrame{
 						}
 						jComboBoxEvents.repaint();
 						
-						if (events.size() == 0)
-							jButtonCreate.setEnabled(false);
-						else
-							jButtonCreate.setEnabled(true);
+						jButtonCreate.setEnabled(events.size() != 0);
 
 					} catch (Exception e1) {
 
