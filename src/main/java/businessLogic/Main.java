@@ -1,5 +1,6 @@
 package businessLogic;
 
+import java.net.MalformedURLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,12 +16,17 @@ public class Main {
 	public static void main(String[] args) {
 		
 		int eL = 1;
-		BLFacade blFacade = new BLFactory().getBusinessLogicFactory(eL);
+		BLFacade blFacade = null;
+		try {
+			blFacade = new BLFactory().getBusinessLogicFactory(eL);
+		} catch (MalformedURLException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date date = null;
 		DataAccess dbManager;
 		ConfigXML c=ConfigXML.getInstance();
-		
 		if (c.getDataBaseOpenMode().equals("initialize")) {
 		    dbManager=new DataAccess(c.getDataBaseOpenMode().equals("initialize"));
 		    dbManager.initializeDB();
@@ -43,8 +49,8 @@ public class Main {
 			dbManager.close();
 			Event e;
 			System.out.println("_____________________");
-			System.out.println("RECORRIDO HACIA ATRÁS");
-			eie.goLast(); // Hacia atrás
+			System.out.println("RECORRIDO HACIA ATRï¿½S");
+			eie.goLast(); // Hacia atrï¿½s
 			
 			while (eie.hasPrevious()) {
 				e = eie.previous();
@@ -77,7 +83,7 @@ public class Main {
 
 		}
 		catch(ParseException e1) {
-			System.out.println("¿Que pasa guapo? ¿Tienes problemas con la fecha?" + date);
+			System.out.println("ï¿½Que pasa guapo? ï¿½Tienes problemas con la fecha?" + date);
 		}
 		
 		
