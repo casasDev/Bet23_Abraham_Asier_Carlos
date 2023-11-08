@@ -63,11 +63,9 @@ public class Main {
 			System.out.println("_____________________");
 			System.out.println("IR AL ultimo");
 			eie.goLast(); // Posicion de la lista es la ultima
-<<<<<<< HEAD
+
 			e = events.get(events.size());
-=======
-			e = events.get(events.size()-1);
->>>>>>> branch 'master' of https://github.com/casasDev/Bet23_Abraham_Asier_Carlos.git
+
 			System.out.println(e.toString());
 			
 			

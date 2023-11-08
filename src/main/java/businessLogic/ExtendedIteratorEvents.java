@@ -50,11 +50,10 @@ ExtendedIterator<Event> {
 
 	public void goLast() {
 
-<<<<<<< HEAD
 		posList=l.size();
-=======
-		posList=l.size()-1;
->>>>>>> branch 'master' of https://github.com/casasDev/Bet23_Abraham_Asier_Carlos.git
+
+	
+
 		
 	}
 
