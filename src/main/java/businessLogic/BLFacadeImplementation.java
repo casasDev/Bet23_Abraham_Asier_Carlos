@@ -104,6 +104,18 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.close();
 		return events;
 	}
+    
+    //Metodo nuevo para iterador
+    @WebMethod
+    public ExtendedIterator<Event> getEventsIterator(Date date){
+    	
+    	dbManager.open(false);
+		ArrayList<Event> events=dbManager.getEvents(date);
+		dbManager.close();
+		ExtendedIteratorEvents eie = new ExtendedIteratorEvents(events);
+		return eie;
+    	
+    }
 
     
 	/**
