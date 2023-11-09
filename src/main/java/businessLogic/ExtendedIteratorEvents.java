@@ -50,7 +50,7 @@ ExtendedIterator<Event> {
 
 	public void goLast() {
 
-		posList=l.size();
+		posList=l.size()-1;
 
 	
 

@@ -70,7 +70,7 @@ public class Main {
 			System.out.println("IR AL ultimo");
 			eie.goLast(); // Posicion de la lista es la ultima
 
-			e = events.get(events.size());
+			e = events.get(events.size()-1);
 
 			System.out.println(e.toString());
 			
