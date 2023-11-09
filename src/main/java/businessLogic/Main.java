@@ -42,15 +42,17 @@ public class Main {
 			} catch (java.text.ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}	
+			}
+			System.out.println("Esto es el extended iterator");
 			ExtendedIterator<Event> eie = blFacade.getEventsIterator(date);
+			System.out.println("Esto es el getEvents normal");
 			dbManager.open(false);
 			ArrayList<Event>  events=dbManager.getEvents(date);
 			dbManager.close();
 			Event e;
 			System.out.println("_____________________");
 			System.out.println("RECORRIDO HACIA ATR�S");
-			eie.goLast(); // Hacia atr�s
+			eie.goLast(); // Hacia atras
 			
 			while (eie.hasPrevious()) {
 				e = eie.previous();
@@ -67,16 +69,16 @@ public class Main {
 			}
 			
 			System.out.println("_____________________");
-			System.out.println("IR AL ultimo");
+			System.out.println("IR AL ULTIMO/OBTENER EL ULTIMO EVENTO");
 			eie.goLast(); // Posicion de la lista es la ultima
 
-			e = events.get(events.size());
+			e = events.get(events.size()-1);
 
 			System.out.println(e.toString());
 			
 			
 			System.out.println("_____________________");
-			System.out.println("IR AL PRIMERO");
+			System.out.println("IR AL PRIMERO/OBTENER EL PRIMER EVENTO");
 			eie.goFirst(); // Posicion de la lista es la primera
 			e = events.get(0);
 			System.out.println(e.toString());
