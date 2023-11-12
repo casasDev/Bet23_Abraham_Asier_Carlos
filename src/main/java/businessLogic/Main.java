@@ -10,6 +10,8 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 import configuration.ConfigXML;
 import dataAccess.DataAccess;
 import domain.Event;
+import domain.Registered;
+import domain.WindowTable;
 
 public class Main {
 
@@ -86,6 +88,16 @@ public class Main {
 		}
 		catch(ParseException e1) {
 			System.out.println("�Que pasa guapo? �Tienes problemas con la fecha?" + date);
+		}
+		
+		try {
+			Registered maiteUrreta= new Registered("MaiteUrreta", "123", 1);
+			blFacade= new BLFacadeImplementation(); //MainTable soilik
+			Registered user = blFacade.findUser(maiteUrreta);
+			WindowTable vt = new WindowTable(user);
+			vt.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		
